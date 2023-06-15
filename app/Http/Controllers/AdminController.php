@@ -19,16 +19,37 @@ use App\Actions\Fortify\AttemptToAuthenticate;
 use App\Actions\Fortify\RedirectIfTwoFactorAuthenticatable;
 use App\Http\Responses\LoginResponse;
 use App\Models\Applications;
-use Illuminate\Console\Application;
+
 
 class AdminController extends Controller
 {
 
     public function allApplications(){
 
-        $all_applications = Applications::all();
+        $all_applications = Applications::get();
 
         return view('admin_dashboard', compact('all_applications'));
+    }
+
+    public function approve($id){
+        $data = Applications::find($id);
+
+        $data->status = 'approved';
+
+        $data->save();
+
+        return redirect()->back();
+    }
+
+
+    public function decline($id){
+        $data = Applications::find($id);
+
+        $data->status = 'declined';
+
+        $data->save();
+
+        return redirect()->back();
     }
     /**
      * The guard implementation.

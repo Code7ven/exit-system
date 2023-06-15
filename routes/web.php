@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Applications;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
@@ -21,6 +22,7 @@ Route::get('/', function () {
 Route::middleware('admin:admin')->group(function () {
     Route::get('admin/login', [AdminController::class, 'loginForm']);
     Route::post('admin/login', [AdminController::class, 'store'])->name('admin.login');
+    
 });
 
 
@@ -29,7 +31,11 @@ Route::middleware([
 ])->group(function () {
     
     Route::get('/admin/dashboard', function () {
-        return view('admin_dashboard');
+
+        $all_applications = Applications::get();
+
+        return view('admin_dashboard', compact('all_applications'));
+
     })->name('dashboard')->middleware('auth:admin');
 
 });
@@ -52,3 +58,5 @@ Route::middleware([
 
 Route::get('logout', [AdminController::class, 'destroy'])->name('logout');
 
+Route::get('approve/{id}', [AdminController::class, 'approve'])->name('approve');
+Route::get('decline/{id}', [AdminController::class, 'decline'])->name('decline');

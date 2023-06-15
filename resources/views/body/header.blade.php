@@ -38,7 +38,7 @@
                 <span class="user-img">
                     <img class="rounded-circle" src="{{ asset('assets/img/profiles/avatar-01.jpg') }}" width="31" alt="Soeng Souy">
                     <div class="user-text">
-                        <h6>Soeng Souy</h6>
+                        <h6>{{ Auth::user()->name }}</h6>
                         <p class="text-muted mb-0">Administrator</p>
                     </div>
                 </span>
@@ -49,7 +49,7 @@
                         <img src="{{ asset('assets/img/profiles/avatar-01.jpg') }}" alt="User Image" class="avatar-img rounded-circle">
                     </div>
                     <div class="user-text">
-                        <h6>Soeng Souy</h6>
+                        <h6>{{ Auth::user()->name }}</h6>
                         <p class="text-muted mb-0">Administrator</p>
                     </div>
                 </div>
