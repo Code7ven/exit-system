@@ -18,9 +18,18 @@ use Laravel\Fortify\Http\Requests\LoginRequest;
 use App\Actions\Fortify\AttemptToAuthenticate;
 use App\Actions\Fortify\RedirectIfTwoFactorAuthenticatable;
 use App\Http\Responses\LoginResponse;
+use App\Models\Applications;
+use Illuminate\Console\Application;
 
 class AdminController extends Controller
 {
+
+    public function allApplications(){
+
+        $all_applications = Applications::all();
+
+        return view('admin_dashboard', compact('all_applications'));
+    }
     /**
      * The guard implementation.
      *

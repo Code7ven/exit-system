@@ -34,7 +34,7 @@
         @include('body.header')
         @include('body.sidebar')
 
-<!-- 
+        <!-- 
         <div class="page-wrapper">
             <div class="content container-fluid">
 
@@ -55,89 +55,159 @@
 
 
 
-                <div class="page-wrapper" style="min-height: 844px;">
-                    <div class="content container-fluid">
+        <div class="page-wrapper" style="min-height: 844px;">
+            <div class="content container-fluid">
 
-                        <div class="page-header">
-                            <div class="row">
-                                <div class="col">
-                                    <h3 class="page-title">Application Form</h3>
-                                    <ul class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                                        <li class="breadcrumb-item active">Horizontal Form</li>
-                                    </ul>
-                                </div>
-                            </div>
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col">
+                            <h3 class="page-title">Application Form</h3>
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                                <li class="breadcrumb-item active">Horizontal Form</li>
+                            </ul>
                         </div>
-
-                        <div class="row">
-                            <div class="col-xl-12 d-flex">
-                                <div class="card flex-fill">
-                                    <div class="card-header">
-                                        <h5 class="card-title">Basic Form</h5>
-                                    </div>
-                                    <div class="card-body">
-                                        <form action="#">
-                                            <div class="form-group row">
-                                                <label class="col-lg-3 col-form-label">First Name</label>
-                                                <div class="col-lg-9">
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-lg-3 col-form-label">Last Name</label>
-                                                <div class="col-lg-9">
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-lg-3 col-form-label">Email Address</label>
-                                                <div class="col-lg-9">
-                                                    <input type="email" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-lg-3 col-form-label">Username</label>
-                                                <div class="col-lg-9">
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-lg-3 col-form-label">Password</label>
-                                                <div class="col-lg-9">
-                                                    <input type="password" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-lg-3 col-form-label">Repeat Password</label>
-                                                <div class="col-lg-9">
-                                                    <input type="password" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="text-end">
-                                                <button type="submit" class="btn btn-primary">Submit</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-
-
                     </div>
+                </div>
 
-                    <footer>
-                        <p>Copyright © 2022 Dreamguys.</p>
-                    </footer>
+                <div class="row">
+                    <div class="col-xl-12 d-flex">
+                        <div class="card flex-fill">
+                            <div class="card-header">
+                                <h5 class="card-title">Application Form</h5>
+                            </div>
+                            <div class="card-body">
+                                <form action="{{ route('submit.application') }}" method="POST">
+                                    @csrf
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label">First Name</label>
+                                        <div class="col-lg-9">
+                                            <input type="text" class="form-control" name="first_name" value="{{ Auth::user()->name }}">
+                                            @error('first_name')
+                                            <span class="text-danger"> {{ $message }} </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label">Last Name</label>
+                                        <div class="col-lg-9">
+                                            <input type="text" class="form-control" name="last_name">
+                                            @error('last_name')
+                                            <span class="text-danger"> {{ $message }} </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label">Matric Number</label>
+                                        <div class="col-lg-9">
+                                            <input type="text" class="form-control" name="matric_no" value="{{ Auth::user()->matric_no }}">
+                                            @error('matric_no')
+                                            <span class="text-danger"> {{ $message }} </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label">Email Address</label>
+                                        <div class="col-lg-9">
+                                            <input type="email" class="form-control" name="email" value="{{ Auth::user()->email }}">
+                                            @error('email')
+                                            <span class="text-danger"> {{ $message }} </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label">Destination</label>
+                                        <div class="col-lg-9">
+                                            <input type="text" class="form-control" name="destination">
+                                            @error('destination')
+                                            <span class="text-danger"> {{ $message }} </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label">Purpose</label>
+                                        <div class="col-lg-9">
+                                            <input type="text" class="form-control" name="purpose">
+                                            @error('purpose')
+                                            <span class="text-danger"> {{ $message }} </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label">Guardian Name</label>
+                                        <div class="col-lg-9">
+                                            <input type="text" class="form-control" name="guardian_name">
+                                            @error('guardian_name')
+                                            <span class="text-danger"> {{ $message }} </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label">Guardian email</label>
+                                        <div class="col-lg-9">
+                                            <input type="email" class="form-control" name="guardian_email">
+                                            @error('guardian_email')
+                                            <span class="text-danger"> {{ $message }} </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label">Guardian Phone</label>
+                                        <div class="col-lg-9">
+                                            <input type="text" class="form-control" name="guardian_phone">
+                                            @error('guardian_phone')
+                                            <span class="text-danger"> {{ $message }} </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <input type="hidden" name="status" value="pending">
+
+
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label">Departure Date</label>
+                                        <div class="col-lg-9">
+                                            <input type="date" class="form-control" name="departure_date">
+                                            @error('departure_date')
+                                            <span class="text-danger"> {{ $message }} </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label">Arrival DAte</label>
+                                        <div class="col-lg-9">
+                                            <input type="date" class="form-control" name="arrival_date">
+                                            @error('arrival_date')
+                                            <span class="text-danger"> {{ $message }} </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+
+                                    <div class="text-end">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
 
 
+
             </div>
 
+            <footer>
+                <p>Copyright © 2022 Dreamguys.</p>
+            </footer>
+
         </div>
+
+
+    </div>
+
+    </div>
 
     </div>
 

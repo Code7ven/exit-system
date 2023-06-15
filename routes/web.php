@@ -35,6 +35,11 @@ Route::middleware([
 });
 
 Route::get('all/my/applications', [UserController::class, 'allApplications'])->name('all.applications');
+Route::post('submit/my/applications', [UserController::class, 'submitApplication'])->name('submit.application');
+
+
+
+
 
 Route::middleware([
     'auth:sanctum', config('jetstream.auth_session'), 'verified'
@@ -46,3 +51,4 @@ Route::middleware([
 
 
 Route::get('logout', [AdminController::class, 'destroy'])->name('logout');
+

@@ -59,27 +59,20 @@
                                     <table class="table mb-0">
                                         <thead>
                                             <tr>
-                                                <th>Firstname</th>
-                                                <th>Lastname</th>
+                                                <th>Purpose</th>
+                                                <th>Status</th>
                                                 <th>Email</th>
                                             </tr>
                                         </thead>
+
+
                                         <tbody>
                                             <tr>
                                                 <td>John</td>
                                                 <td>Doe</td>
                                                 <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a8c2c7c0c6e8cdd0c9c5d8c4cd86cbc7c5">[email&#160;protected]</a></td>
                                             </tr>
-                                            <tr>
-                                                <td>Mary</td>
-                                                <td>Moe</td>
-                                                <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0a676b78734a6f726b677a666f24696567">[email&#160;protected]</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>July</td>
-                                                <td>Dooley</td>
-                                                <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="056f70697c45607d64687569602b666a68">[email&#160;protected]</a></td>
-                                            </tr>
+
                                         </tbody>
                                     </table>
                                 </div>
